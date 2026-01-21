@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --tokyo-bg: hsl(235 21% 11%);
+  --tokyo-bg-dark: hsl(235 23% 8%);
+  --tokyo-bg-highlight: hsl(235 21% 18%);
+  --tokyo-purple: hsl(267 84% 81%);
+  --tokyo-blue: hsl(217 89% 76%);
+  --tokyo-cyan: hsl(188 97% 67%);
+  --tokyo-green: hsl(115 54% 76%);
+  --tokyo-yellow: hsl(40 97% 64%);
+  --tokyo-orange: hsl(24 89% 69%);
+  --tokyo-red: hsl(348 90% 71%);
+  --tokyo-magenta: hsl(330 81% 75%);
+  --tokyo-fg: hsl(224 28% 85%);
+  --tokyo-comment: hsl(224 14% 45%);
+}
+
+@theme inline {
+  --color-tokyo-bg: var(--tokyo-bg);
+  --color-tokyo-bg-dark: var(--tokyo-bg-dark);
+  --color-tokyo-bg-highlight: var(--tokyo-bg-highlight);
+  --color-tokyo-purple: var(--tokyo-purple);
+  --color-tokyo-blue: var(--tokyo-blue);
+  --color-tokyo-cyan: var(--tokyo-cyan);
+  --color-tokyo-green: var(--tokyo-green);
+  --color-tokyo-yellow: var(--tokyo-yellow);
+  --color-tokyo-orange: var(--tokyo-orange);
+  --color-tokyo-red: var(--tokyo-red);
+  --color-tokyo-magenta: var(--tokyo-magenta);
+  --color-tokyo-fg: var(--tokyo-fg);
+  --color-tokyo-comment: var(--tokyo-comment);
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rotate, 12deg));
+  }
+  50% {
+    transform: translateY(-15px) rotate(var(--rotate, 12deg));
+  }
+}
+
+@keyframes float-reverse {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rotate, -6deg));
+  }
+  50% {
+    transform: translateY(10px) rotate(var(--rotate, -6deg));
+  }
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(2px, -2px);
+  }
+  60% {
+    clip-path: inset(60% 0 20% 0);
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px var(--tokyo-purple),
+      0 0 40px transparent;
+  }
+  50% {
+    box-shadow:
+      0 0 30px var(--tokyo-purple),
+      0 0 60px var(--tokyo-purple);
+  }
+}
+
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+}
