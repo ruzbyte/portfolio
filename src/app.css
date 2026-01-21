@@ -33,6 +33,18 @@
   --font-mono:
     "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     monospace;
+
+  --color-terminal-gradient: linear-gradient(
+    135deg,
+    var(--tokyo-bg-dark),
+    var(--tokyo-bg-highlight)
+  );
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 body {
@@ -142,4 +154,39 @@ body {
     transform: translateY(8px);
     opacity: 0.5;
   }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-border {
+  position: relative;
+  padding: 2px;
+  border-radius: 4px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--tokyo-purple),
+    var(--tokyo-cyan),
+    var(--tokyo-blue),
+    var(--tokyo-purple)
+  );
+  animation: gradient-rotate 4s linear infinite;
+}
+
+.gradient-border-inner {
+  background: var(--tokyo-bg-dark);
+  border-radius: 2px;
+  overflow: hidden;
 }

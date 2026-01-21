@@ -1,0 +1,12 @@
+{
+    "hero": {
+        "title": "Fullstack Entwickler & Computertechnik Student",
+        "subtitle": "Ich baue moderne Webanwendungen und lerne ständig neue Technologien.",
+        "contact_button": "Kontaktieren Sie mich"
+    },
+    "nav": {
+        "home": "startseite",
+        "projects": "projekte",
+        "contact": "kontakt"
+    }
+}

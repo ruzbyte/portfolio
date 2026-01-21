@@ -8,7 +8,14 @@
 
   const commands = [
     { prompt: "~", command: "echo $(whoami)", delay: 100 },
-    { prompt: "~", output: "fullstack_developer", isOutput: true, delay: 50 },
+    { prompt: "~", output: "ruzbyte", isOutput: true, delay: 20 },
+    { prompt: "~", command: "groups $(whoami)", delay: 50 },
+    {
+      prompt: "~",
+      output: "fullstack_developer wheel docker",
+      isOutput: true,
+      delay: 20,
+    },
   ];
 
   $effect(() => {
@@ -75,51 +82,63 @@
   ></div>
 
   <div class="relative z-10 w-full max-w-4xl mx-auto px-6">
-    <!-- Terminal Window -->
+    <!-- Terminal Window - Tiling WM style with animated gradient border -->
     <div
-      class="tile-window zzz-glow"
-      style="animation: fade-in-scale 0.8s ease-out, pulse-glow 4s ease-in-out infinite 1s;"
+      class="gradient-border"
+      style="animation: fade-in-scale 0.8s ease-out, gradient-rotate 4s linear infinite;"
     >
-      <div class="tile-header">
-        <div class="tile-dot bg-tokyo-red"></div>
-        <div class="tile-dot bg-tokyo-yellow"></div>
-        <div class="tile-dot bg-tokyo-green"></div>
-        <span class="ml-2 text-tokyo-comment text-sm">hyprland ~ zsh</span>
-      </div>
+      <div class="gradient-border-inner">
+        <!-- Clean header bar like a tiling WM -->
+        <div
+          class="flex items-center justify-between px-4 py-2 bg-tokyo-bg-dark border-b border-tokyo-purple/20"
+        >
+          <span class="text-tokyo-comment text-xs">kitty ~ fish</span>
+          <div class="flex items-center gap-3 text-xs text-tokyo-comment">
+            <img
+              src="/evernight.svg"
+              alt="Terminal Icon"
+              class="w-4 h-4 fill-tokyo-bg"
+            />
+            <span>ruzbyte@ruzbyte-Cachy</span>
+          </div>
+        </div>
 
-      <div class="p-6 min-h-[200px]">
-        {#each terminalLines as line, i}
-          <div class="flex items-center gap-2 mb-2">
-            {#if !line.isOutput}
-              <span class="text-tokyo-cyan">{line.prompt}</span>
-              <span class="text-tokyo-purple">{">"}</span>
-              <span class="text-tokyo-fg">{line.typed}</span>
-              {#if i === terminalLines.length - 1 && !line.isOutput && line.typed !== line.command}
-                <span class="text-tokyo-cyan animate-pulse">_</span>
+        <div class="p-6 min-h-[200px]">
+          {#each terminalLines as line, i}
+            <div class="flex items-center gap-2 mb-2">
+              {#if !line.isOutput}
+                <span class="text-tokyo-cyan">{line.prompt}</span>
+                <span class="text-tokyo-purple">{">"}</span>
+                <span class="text-tokyo-fg">{line.typed}</span>
+                {#if i === terminalLines.length - 1 && !line.isOutput && line.typed !== line.command}
+                  <span class="text-tokyo-cyan animate-pulse">_</span>
+                {/if}
+              {:else}
+                <span
+                  class="text-tokyo-green text-2xl font-bold tracking-wider glitch-skew"
+                  >{line.typed}</span
+                >
               {/if}
-            {:else}
-              <span
-                class="text-tokyo-green text-2xl font-bold tracking-wider glitch-skew"
-                >{line.typed}</span
-              >
-            {/if}
-          </div>
-        {/each}
+            </div>
+          {/each}
 
-        {#if currentLineIndex >= commands.length}
-          <div class="flex items-center gap-2 mt-4">
-            <span class="text-tokyo-cyan">~</span>
-            <span class="text-tokyo-purple">{">"}</span>
-            <span class="text-tokyo-cyan animate-pulse">_</span>
-          </div>
-        {/if}
+          {#if currentLineIndex >= commands.length}
+            <div class="flex items-center gap-2 mt-4">
+              <span class="text-tokyo-cyan">~</span>
+              <span class="text-tokyo-purple">{">"}</span>
+              <span class="text-tokyo-cyan animate-pulse">_</span>
+            </div>
+          {/if}
+        </div>
       </div>
     </div>
 
     <!-- Intro text area -->
     {#if showIntro}
       <div class="mt-8 space-y-4 animate-[fade-in-up_0.6s_ease-out]">
-        <div class="tile-window p-6 zzz-glow">
+        <div
+          class="bg-tokyo-bg-dark/90 border border-tokyo-cyan/20 rounded-sm p-6 backdrop-blur-sm"
+        >
           <div class="flex items-center gap-2 text-tokyo-comment text-sm mb-4">
             <span class="text-tokyo-yellow"
               >/* TODO: Add your intro here */</span
