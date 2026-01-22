@@ -4,6 +4,12 @@
   import SkillsSection from "./lib/components/skills-section.svelte";
   import ProjectsSection from "./lib/components/projects-section.svelte";
   import ContactSection from "./lib/components/contact-section.svelte";
+
+  let menuOpen = $state(false);
+
+  function closeMenu() {
+    menuOpen = false;
+  }
 </script>
 
 <svelte:head>
@@ -27,14 +33,15 @@
 
 <main class="relative min-h-screen overflow-x-hidden">
   <!-- Navigation bar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+  <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="text-tokyo-purple font-bold">~</span>
         <span class="text-tokyo-fg">/ruzbyte</span>
       </div>
 
-      <div class="flex items-center gap-1 text-sm">
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1 text-sm">
         <a
           href="#skills"
           class="px-3 py-1 text-tokyo-comment hover:text-tokyo-purple transition-colors"
@@ -77,7 +84,80 @@
           </select>
         </div>
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        class="md:hidden flex flex-col gap-1.5 p-2 text-tokyo-comment hover:text-tokyo-purple transition-colors"
+        onclick={() => (menuOpen = !menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span
+          class="block w-5 h-0.5 bg-current transition-transform {menuOpen
+            ? 'rotate-45 translate-y-2'
+            : ''}"
+        ></span>
+        <span
+          class="block w-5 h-0.5 bg-current transition-opacity {menuOpen
+            ? 'opacity-0'
+            : ''}"
+        ></span>
+        <span
+          class="block w-5 h-0.5 bg-current transition-transform {menuOpen
+            ? '-rotate-45 -translate-y-2'
+            : ''}"
+        ></span>
+      </button>
     </div>
+
+    <!-- Mobile Menu Dropdown -->
+    {#if menuOpen}
+      <div
+        class="md:hidden mt-3 mx-auto max-w-6xl bg-tokyo-bg-dark/95 border border-tokyo-purple/30 rounded-lg backdrop-blur-md animate-[slide-down_0.2s_ease-out]"
+      >
+        <div class="flex flex-col p-4 gap-1">
+          <a
+            href="#skills"
+            onclick={closeMenu}
+            class="px-4 py-3 text-tokyo-comment hover:text-tokyo-purple hover:bg-tokyo-purple/10 transition-colors rounded"
+            >skills</a
+          >
+          <a
+            href="#projects"
+            onclick={closeMenu}
+            class="px-4 py-3 text-tokyo-comment hover:text-tokyo-cyan hover:bg-tokyo-cyan/10 transition-colors rounded"
+            >projects</a
+          >
+          <a
+            href="#contact"
+            onclick={closeMenu}
+            class="px-4 py-3 text-tokyo-comment hover:text-tokyo-green hover:bg-tokyo-green/10 transition-colors rounded"
+            >contact</a
+          >
+          <div class="flex items-center gap-2 px-4 py-3 text-tokyo-comment">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              />
+            </svg>
+            <select
+              bind:value={$locale}
+              class="bg-transparent text-tokyo-comment hover:text-tokyo-orange text-sm px-1 py-1 border-none outline-none cursor-pointer appearance-none transition-colors"
+            >
+              <option value="en" class="bg-tokyo-bg text-tokyo-fg">en</option>
+              <option value="de" class="bg-tokyo-bg text-tokyo-fg">de</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    {/if}
   </nav>
 
   <!-- Sections -->

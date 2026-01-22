@@ -17,14 +17,14 @@
     { prompt: "~", command: "groups $(whoami)", delay: 50 },
     {
       prompt: "~",
-      output: "fullstack_developer gamer student",
+      output: "dev gamer student",
       isOutput: true,
       delay: 20,
     },
     { prompt: "~", command: "./location.sh", delay: 50 },
     {
       prompt: "~",
-      output: "📍 Meßstetten, Baden-Württemberg, Germany",
+      output: "📍 Meßstetten, Germany",
       isOutput: true,
       delay: 20,
     },
@@ -79,21 +79,21 @@
     ></div>
   </div>
 
-  <!-- Floating glitch elements -->
+  <!-- Floating glitch elements - hidden on mobile -->
   <div
-    class="absolute top-20 left-10 w-32 h-32 border border-tokyo-purple/30 opacity-30"
+    class="hidden sm:block absolute top-20 left-10 w-32 h-32 border border-tokyo-purple/30 opacity-30"
     style="--rotate: 12deg; animation: float 6s ease-in-out infinite;"
   ></div>
   <div
-    class="absolute bottom-32 right-20 w-24 h-24 border border-tokyo-cyan/30 opacity-20"
+    class="hidden sm:block absolute bottom-32 right-20 w-24 h-24 border border-tokyo-cyan/30 opacity-20"
     style="--rotate: -6deg; animation: float-reverse 5s ease-in-out infinite 0.5s;"
   ></div>
   <div
-    class="absolute top-1/3 right-1/4 w-16 h-16 bg-tokyo-purple/10 rotate-45"
+    class="hidden sm:block absolute top-1/3 right-1/4 w-16 h-16 bg-tokyo-purple/10 rotate-45"
     style="animation: float 7s ease-in-out infinite 1s;"
   ></div>
 
-  <div class="relative z-10 w-full max-w-4xl mx-auto px-6">
+  <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6">
     <!-- Terminal Window - Tiling WM style with animated gradient border -->
     <div
       class="gradient-border"
@@ -102,32 +102,43 @@
       <div class="gradient-border-inner">
         <!-- Clean header bar like a tiling WM -->
         <div
-          class="flex items-center justify-between px-4 py-2 bg-tokyo-bg-dark border-b border-tokyo-purple/20"
+          class="flex items-center justify-between px-3 sm:px-4 py-2 bg-tokyo-bg-dark border-b border-tokyo-purple/20"
         >
-          <span class="text-tokyo-comment text-xs">kitty ~ fish</span>
-          <div class="flex items-center gap-3 text-xs text-tokyo-comment">
+          <span class="text-tokyo-comment text-[10px] sm:text-xs"
+            >kitty ~ fish</span
+          >
+          <div
+            class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-tokyo-comment"
+          >
             <img
               src="./logo.svg"
               alt="Terminal Icon"
-              class="w-4 h-4 fill-tokyo-bg"
+              class="w-3 h-3 sm:w-4 sm:h-4 fill-tokyo-bg"
             />
-            <span>ruzbyte@ruzbyte-Cachy</span>
+            <span class="hidden sm:inline">ruzbyte@ruzbyte-Cachy</span>
+            <span class="sm:hidden">ruzbyte</span>
           </div>
         </div>
 
-        <div class="p-6 min-h-[200px]">
+        <div class="p-4 sm:p-6 min-h-[180px] sm:min-h-[200px]">
           {#each terminalLines as line, i}
-            <div class="flex items-center gap-2 mb-2">
+            <div
+              class="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2 flex-wrap"
+            >
               {#if !line.isOutput}
-                <span class="text-tokyo-cyan sm:text-md">{line.prompt}</span>
-                <span class="text-tokyo-purple sm:text-md">{">"}</span>
-                <span class="text-tokyo-fg sm:text-sm">{line.typed}</span>
+                <span class="text-tokyo-cyan text-xs sm:text-sm"
+                  >{line.prompt}</span
+                >
+                <span class="text-tokyo-purple text-xs sm:text-sm">{">"}</span>
+                <span class="text-tokyo-fg text-xs sm:text-sm break-all"
+                  >{line.typed}</span
+                >
                 {#if i === terminalLines.length - 1 && !line.isOutput && line.typed !== line.command}
                   <span class="text-tokyo-cyan animate-pulse">_</span>
                 {/if}
               {:else}
                 <span
-                  class="text-tokyo-green text-2xl animate-[fade-in-up_0.6s_ease-out] font-bold tracking-wider glitch-skew"
+                  class="text-tokyo-green text-base sm:text-md animate-[fade-in-up_0.6s_ease-out] font-bold tracking-wider glitch-skew break-all"
                   >{line.typed}</span
                 >
               {/if}
@@ -135,9 +146,9 @@
           {/each}
 
           {#if currentLineIndex >= commands.length}
-            <div class="flex items-center gap-2 mt-4">
-              <span class="text-tokyo-cyan">~</span>
-              <span class="text-tokyo-purple">{">"}</span>
+            <div class="flex items-center gap-1 sm:gap-2 mt-2 sm:mt-4">
+              <span class="text-tokyo-cyan text-xs sm:text-sm">~</span>
+              <span class="text-tokyo-purple text-xs sm:text-sm">{">"}</span>
               <span class="text-tokyo-cyan animate-pulse">_</span>
             </div>
           {/if}
@@ -147,14 +158,18 @@
 
     <!-- Intro text area -->
     {#if showIntro}
-      <div class="mt-8 space-y-4 animate-[fade-in-up_0.6s_ease-out]">
+      <div
+        class="mt-4 sm:mt-8 space-y-3 sm:space-y-4 animate-[fade-in-up_0.6s_ease-out]"
+      >
         <div
-          class="bg-tokyo-bg-dark/90 border border-tokyo-cyan/20 rounded-sm p-6 backdrop-blur-sm"
+          class="bg-tokyo-bg-dark/90 border border-tokyo-cyan/20 rounded-sm p-4 sm:p-6 backdrop-blur-sm"
         >
-          <div class="flex items-center gap-2 text-tokyo-comment text-sm mb-4">
+          <div
+            class="flex items-center gap-2 text-tokyo-comment text-xs sm:text-sm mb-3 sm:mb-4"
+          >
             <span class="text-tokyo-yellow">/* About Me */</span>
           </div>
-          <p class="text-tokyo-fg/80 leading-relaxed">
+          <p class="text-tokyo-fg/80 leading-relaxed text-sm sm:text-base">
             <span class="text-tokyo-purple">const</span>
             <span class="text-tokyo-blue">bio</span>
             =
@@ -164,35 +179,32 @@
               every single day."</span
             >;
           </p>
-          <p class="text-tokyo-comment mt-2 text-sm">
+          <p class="text-tokyo-comment mt-2 text-xs sm:text-sm">
             // Starting my passion from gaming as a kid, I quickly grew into
             building software I need, and also others use daily to make life
-            easier. While trained as an RPGLE/.NET backend developer I used my
-            free time to explore other technologies and domains, leading me to
-            become a versatile fullstack developer and im continuously expanding
-            my skillset, soon graduaing with a BSc in Computer Engineering.
+            easier.
           </p>
         </div>
 
         <!-- Quick navigation hints -->
-        <div class="flex flex-wrap gap-3 justify-center mt-8">
+        <div class="flex flex-wrap gap-2 sm:gap-3 justify-center mt-4 sm:mt-8">
           <a
             href="#skills"
-            class="px-4 py-2 text-sm border border-tokyo-purple/50 text-tokyo-purple hover:bg-tokyo-purple/10 hover:scale-105 transition-all duration-300 rounded"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm border border-tokyo-purple/50 text-tokyo-purple hover:bg-tokyo-purple/10 hover:scale-105 transition-all duration-300 rounded"
             style="animation: fade-in-up 0.5s ease-out 0.1s both;"
           >
             tree ~/skills
           </a>
           <a
             href="#projects"
-            class="px-4 py-2 text-sm border border-tokyo-cyan/50 text-tokyo-cyan hover:bg-tokyo-cyan/10 hover:scale-105 transition-all duration-300 rounded"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm border border-tokyo-cyan/50 text-tokyo-cyan hover:bg-tokyo-cyan/10 hover:scale-105 transition-all duration-300 rounded"
             style="animation: fade-in-up 0.5s ease-out 0.2s both;"
           >
-            ls -lah ~/projects
+            ls ~/projects
           </a>
           <a
             href="#contact"
-            class="px-4 py-2 text-sm border border-tokyo-green/50 text-tokyo-green hover:bg-tokyo-green/10 hover:scale-105 transition-all duration-300 rounded"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm border border-tokyo-green/50 text-tokyo-green hover:bg-tokyo-green/10 hover:scale-105 transition-all duration-300 rounded"
             style="animation: fade-in-up 0.5s ease-out 0.3s both;"
           >
             ./contact.sh
@@ -204,14 +216,16 @@
 
   <!-- Scroll indicator -->
   <div
-    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-tokyo-comment text-sm flex flex-col items-center gap-2"
+    class="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-tokyo-comment text-sm flex flex-col items-center gap-2"
     style="animation: fade-in-up 1s ease-out 1.5s both;"
   >
     <span
-      class="text-xs"
+      class="text-[10px] sm:text-xs"
       style="animation: scroll-bounce 2s ease-in-out infinite;"
       >scroll down</span
     >
-    <div class="w-px h-8 bg-linear-to-b from-tokyo-purple to-transparent"></div>
+    <div
+      class="w-px h-6 sm:h-8 bg-linear-to-b from-tokyo-purple to-transparent"
+    ></div>
   </div>
 </section>
