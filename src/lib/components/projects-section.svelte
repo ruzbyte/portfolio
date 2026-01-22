@@ -6,46 +6,64 @@
 
   const projects = [
     {
-      name: "hypr-dashboard",
+      name: "valstore",
       type: "drwxr-xr-x",
-      size: "4.2K",
-      date: "Jan 15",
-      description:
-        "Real-time system monitoring dashboard with Hyprland integration",
-      tags: ["Svelte", "Rust", "WebSocket"],
-      status: "active",
-      link: "#",
+      size: "42.2K",
+      date: "June 2022",
+      description: "Access your valorant shop on your phone",
+      tags: ["Flutter", "Firebase", "REST API"],
+      status: "archived",
+      link: "https://github.com/ruzbyte/valstore-mobile",
     },
     {
       name: "dotfiles",
       type: "drwxr-xr-x",
       size: "2.1K",
-      date: "Dec 28",
-      description:
-        "Personal configuration files for Arch Linux + Hyprland setup",
+      date: "Nov 28 2025",
+      description: "Personal configuration files for development",
       tags: ["Shell", "Lua", "CSS"],
-      status: "maintained",
-      link: "#",
-    },
-    {
-      name: "api-forge",
-      type: "drwxr-xr-x",
-      size: "8.7K",
-      date: "Jan 10",
-      description: "REST API scaffolding tool with auto-documentation",
-      tags: ["Node.js", "TypeScript", "OpenAPI"],
       status: "active",
-      link: "#",
+      link: "https://github.com/ruzbyte/dotfiles",
     },
     {
-      name: "pixel-wars",
+      name: "qube",
+      type: "drwxr-xr-x",
+      size: "18.7K",
+      date: "Jan 8",
+      description: "Deploy game servers in seconds using Docker",
+      tags: ["Docker", "TypeScript", "Next.js"],
+      status: "active",
+      link: "https://github.com/ruzbyte/qube",
+    },
+    {
+      name: "linux-wallpaper-engine-ui",
       type: "drwxr-xr-x",
       size: "12.3K",
-      date: "Nov 20",
-      description: "Multiplayer canvas game inspired by r/place",
-      tags: ["React", "Socket.io", "Redis"],
-      status: "archived",
-      link: "#",
+      date: "Dec 20",
+      description: "A wallpaper engine client for Linux desktops",
+      tags: ["Flutter", "Linux"],
+      status: "active",
+      link: "https://github.com/ruzbyte/linux-wallpaper-engine-ui",
+    },
+    {
+      name: "kafka",
+      type: "drwxr-xr-x",
+      size: "8.5K",
+      date: "Feb 15",
+      description: "All In One student platform",
+      tags: ["Next.js", "Rest API", "TypeScript", "Firebase"],
+      status: "maintained",
+      link: "https://github.com/ruzbyte/kafka",
+    },
+    {
+      name: "MC68000-Emulator",
+      type: "drwxr-xr-x",
+      size: "5.4K",
+      date: "March 10",
+      description: "A Motorola 68000 CPU emulator concept written in Rust",
+      tags: ["Rust", "Emulator"],
+      status: "maintained",
+      link: "https://github.com/ruzbyte/MC68000-Emulator",
     },
   ];
 
@@ -126,7 +144,7 @@
                 <span class="text-tokyo-comment w-12 shrink-0 text-right"
                   >{project.size}</span
                 >
-                <span class="text-tokyo-comment w-16 shrink-0"
+                <span class="text-tokyo-comment w-20 shrink-0"
                   >{project.date}</span
                 >
                 <span

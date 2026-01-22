@@ -8,11 +8,23 @@
 
   const commands = [
     { prompt: "~", command: "echo $(whoami)", delay: 100 },
-    { prompt: "~", output: "ruzbyte", isOutput: true, delay: 20 },
+    {
+      prompt: "~",
+      output: "Arthur 'ruzbyte' Aktamirov",
+      isOutput: true,
+      delay: 20,
+    },
     { prompt: "~", command: "groups $(whoami)", delay: 50 },
     {
       prompt: "~",
-      output: "fullstack_developer wheel docker",
+      output: "fullstack_developer gamer student",
+      isOutput: true,
+      delay: 20,
+    },
+    { prompt: "~", command: "./location.sh", delay: 50 },
+    {
+      prompt: "~",
+      output: "📍 Meßstetten, Baden-Württemberg, Germany",
       isOutput: true,
       delay: 20,
     },
@@ -95,7 +107,7 @@
           <span class="text-tokyo-comment text-xs">kitty ~ fish</span>
           <div class="flex items-center gap-3 text-xs text-tokyo-comment">
             <img
-              src="/evernight.svg"
+              src="./logo.svg"
               alt="Terminal Icon"
               class="w-4 h-4 fill-tokyo-bg"
             />
@@ -107,15 +119,15 @@
           {#each terminalLines as line, i}
             <div class="flex items-center gap-2 mb-2">
               {#if !line.isOutput}
-                <span class="text-tokyo-cyan">{line.prompt}</span>
-                <span class="text-tokyo-purple">{">"}</span>
-                <span class="text-tokyo-fg">{line.typed}</span>
+                <span class="text-tokyo-cyan sm:text-md">{line.prompt}</span>
+                <span class="text-tokyo-purple sm:text-md">{">"}</span>
+                <span class="text-tokyo-fg sm:text-sm">{line.typed}</span>
                 {#if i === terminalLines.length - 1 && !line.isOutput && line.typed !== line.command}
                   <span class="text-tokyo-cyan animate-pulse">_</span>
                 {/if}
               {:else}
                 <span
-                  class="text-tokyo-green text-2xl font-bold tracking-wider glitch-skew"
+                  class="text-tokyo-green text-2xl animate-[fade-in-up_0.6s_ease-out] font-bold tracking-wider glitch-skew"
                   >{line.typed}</span
                 >
               {/if}
@@ -140,20 +152,25 @@
           class="bg-tokyo-bg-dark/90 border border-tokyo-cyan/20 rounded-sm p-6 backdrop-blur-sm"
         >
           <div class="flex items-center gap-2 text-tokyo-comment text-sm mb-4">
-            <span class="text-tokyo-yellow"
-              >/* TODO: Add your intro here */</span
-            >
+            <span class="text-tokyo-yellow">/* About Me */</span>
           </div>
           <p class="text-tokyo-fg/80 leading-relaxed">
             <span class="text-tokyo-purple">const</span>
             <span class="text-tokyo-blue">bio</span>
             =
             <span class="text-tokyo-green"
-              >"Crafting digital experiences with code"</span
+              >"I'm a german vocationally trained software developer currently
+              studying computer engineering, learning and building software
+              every single day."</span
             >;
           </p>
           <p class="text-tokyo-comment mt-2 text-sm">
-            // More content coming soon...
+            // Starting my passion from gaming as a kid, I quickly grew into
+            building software I need, and also others use daily to make life
+            easier. While trained as an RPGLE/.NET backend developer I used my
+            free time to explore other technologies and domains, leading me to
+            become a versatile fullstack developer and im continuously expanding
+            my skillset, soon graduaing with a BSc in Computer Engineering.
           </p>
         </div>
 

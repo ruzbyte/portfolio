@@ -97,7 +97,7 @@
       </div>
       <div class="flex items-center gap-2">
         <span class="text-tokyo-purple">/* </span>
-        <span>2024 - present</span>
+        <span>2026 - ~/ruzbyte</span>
         <span class="text-tokyo-purple"> */</span>
       </div>
     </div>
